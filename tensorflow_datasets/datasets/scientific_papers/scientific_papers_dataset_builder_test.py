@@ -13,18 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""sentiment140 dataset."""
+"""Scientific Papers Dataset Test."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.text.sentiment140 import sentiment140
+from tensorflow_datasets.datasets.scientific_papers import scientific_papers_dataset_builder
 
 
-class Sentiment140Test(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = sentiment140.Sentiment140
+class ScientificPapersTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = scientific_papers_dataset_builder.Builder
   SPLITS = {
-      "train": 2,  # Number of fake train examples
-      "test": 2,  # Number of fake test examples
+      "train": 1,  # Number of fake train example
+      "validation": 1,  # Number of fake validation example
+      "test": 1,  # Number of fake test example
   }
+  DL_EXTRACT_RESULT = {"arxiv": "", "pubmed": ""}
 
 
 if __name__ == "__main__":

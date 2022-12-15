@@ -13,20 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Scientific Papers Dataset Test."""
+"""Tests for SCAN dataset module."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.summarization import scientific_papers
+from tensorflow_datasets.datasets.scan import scan_dataset_builder
 
 
-class ScientificPapersTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = scientific_papers.ScientificPapers
+class ScanTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = scan_dataset_builder.Builder
+  BUILDER_CONFIG_NAMES_TO_TEST = ["simple"]
   SPLITS = {
-      "train": 1,  # Number of fake train example
-      "validation": 1,  # Number of fake validation example
+      "train": 3,  # Number of fake train example
       "test": 1,  # Number of fake test example
   }
-  DL_EXTRACT_RESULT = {"arxiv": "", "pubmed": ""}
 
 
 if __name__ == "__main__":

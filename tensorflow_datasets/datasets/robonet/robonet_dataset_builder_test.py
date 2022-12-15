@@ -13,20 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Test for scicite dataset."""
+"""Tests for tensorflow_datasets.video.{dataset_name}_dataset_builder."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.text import scicite
+from tensorflow_datasets.datasets.robonet import robonet_dataset_builder
 
 
-class SciciteTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = scicite.Scicite
+class Robonet64Test(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = robonet_dataset_builder.Builder
+
   SPLITS = {
-      "train": 3,  # Number of fake train example
-      "validation": 1,  # Number of fake validation example
-      "test": 1,  # Number of fake test example
+      "train": 9,
   }
-  DL_EXTRACT_RESULT = {"scicite": ""}
 
 
 if __name__ == "__main__":
