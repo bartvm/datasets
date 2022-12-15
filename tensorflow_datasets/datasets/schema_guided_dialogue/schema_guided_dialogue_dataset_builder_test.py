@@ -13,18 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""scitail dataset."""
+"""schema_guided_dialogue dataset."""
 
+from tensorflow_datasets.datasets.schema_guided_dialogue import schema_guided_dialogue_dataset_builder
 import tensorflow_datasets.public_api as tfds
-from tensorflow_datasets.text.scitail import scitail
 
 
-class SciTailTest(tfds.testing.DatasetBuilderTestCase):
-  """Tests for scitail dataset."""
-  DATASET_CLASS = scitail.SciTail
+class SchemaGuidedDialogueTest(tfds.testing.DatasetBuilderTestCase):
+  """Tests for schema_guided_dialogue dataset."""
+  DATASET_CLASS = schema_guided_dialogue_dataset_builder.Builder
   SPLITS = {
       'train': 3,  # Number of fake train example
-      'validation': 1,  # Number of fake dev example
+      'dev': 2,  # Number of fake train example
       'test': 1,  # Number of fake test example
   }
 

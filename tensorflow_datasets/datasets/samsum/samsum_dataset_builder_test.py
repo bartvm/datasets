@@ -13,20 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for rockyou dataset module."""
+"""SAMSum dataset test."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.structured import rock_you
+from tensorflow_datasets.datasets.samsum import samsum_dataset_builder
 
 
-class RockYouTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = rock_you.RockYou
-
+class SamsumTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = samsum_dataset_builder.Builder
   SPLITS = {
-      "train": 11,
+      "train": 1,  # Number of fake train example
+      "validation": 1,  # Number of fake train example
+      "test": 1,  # Number of fake train example
   }
-
-  DL_EXTRACT_RESULT = "rockyou.txt"
 
 
 if __name__ == "__main__":
