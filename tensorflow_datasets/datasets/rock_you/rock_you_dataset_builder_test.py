@@ -13,19 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for SAVEE dataset builder."""
+"""Tests for rockyou dataset module."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.audio import savee
+from tensorflow_datasets.datasets.rock_you import rock_you_dataset_builder
 
 
-class SaveeTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = savee.Savee
+class RockYouTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = rock_you_dataset_builder.Builder
+
   SPLITS = {
-      "train": 8,
-      "validation": 4,
-      "test": 4,
+      "train": 11,
   }
+
+  DL_EXTRACT_RESULT = "rockyou.txt"
 
 
 if __name__ == "__main__":
