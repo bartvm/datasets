@@ -13,20 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for SAVEE dataset builder."""
+"""Tests for Rock, Paper, Scissors data module."""
 
-from tensorflow_datasets import testing
-from tensorflow_datasets.audio import savee
+from tensorflow_datasets.datasets.rock_paper_scissors import rock_paper_scissors_dataset_builder
+import tensorflow_datasets.testing as tfds_test
+
+rock_paper_scissors_dataset_builder._IMAGE_SHAPE = (None, None, 3)  # pylint: disable=protected-access
 
 
-class SaveeTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = savee.Savee
+class RockPaperScissorsTest(tfds_test.DatasetBuilderTestCase):
+  DATASET_CLASS = rock_paper_scissors_dataset_builder.Builder
+
   SPLITS = {
-      "train": 8,
-      "validation": 4,
-      "test": 4,
+      'train': 3,
+      'test': 3,
   }
 
+  DL_EXTRACT_RESULT = ['rps_train.zip', 'rps_test.zip']
 
-if __name__ == "__main__":
-  testing.test_main()
+
+if __name__ == '__main__':
+  tfds_test.test_main()

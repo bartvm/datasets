@@ -13,18 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for SCAN dataset module."""
+"""Tests for tensorflow_datasets.video.{dataset_name}_dataset_builder."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.text import scan
+from tensorflow_datasets.datasets.robonet import robonet_dataset_builder
 
 
-class ScanTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = scan.Scan
-  BUILDER_CONFIG_NAMES_TO_TEST = ["simple"]
+class Robonet64Test(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = robonet_dataset_builder.Builder
+
   SPLITS = {
-      "train": 3,  # Number of fake train example
-      "test": 1,  # Number of fake test example
+      "train": 9,
   }
 
 
