@@ -13,20 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for SCAN dataset module."""
+"""Tests for Rock, Paper, Scissors data module."""
 
-from tensorflow_datasets import testing
-from tensorflow_datasets.text import scan
+from tensorflow_datasets.datasets.rock_paper_scissors import rock_paper_scissors_dataset_builder
+import tensorflow_datasets.testing as tfds_test
+
+rock_paper_scissors_dataset_builder._IMAGE_SHAPE = (None, None, 3)  # pylint: disable=protected-access
 
 
-class ScanTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = scan.Scan
-  BUILDER_CONFIG_NAMES_TO_TEST = ["simple"]
+class RockPaperScissorsTest(tfds_test.DatasetBuilderTestCase):
+  DATASET_CLASS = rock_paper_scissors_dataset_builder.Builder
+
   SPLITS = {
-      "train": 3,  # Number of fake train example
-      "test": 1,  # Number of fake test example
+      'train': 3,
+      'test': 3,
   }
 
+  DL_EXTRACT_RESULT = ['rps_train.zip', 'rps_test.zip']
 
-if __name__ == "__main__":
-  testing.test_main()
+
+if __name__ == '__main__':
+  tfds_test.test_main()

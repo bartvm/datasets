@@ -13,24 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for Rock, Paper, Scissors data module."""
+"""Tests for tensorflow_datasets.video.{dataset_name}_dataset_builder."""
 
-from tensorflow_datasets.image_classification import rock_paper_scissors
-import tensorflow_datasets.testing as tfds_test
-
-rock_paper_scissors._IMAGE_SHAPE = (None, None, 3)  # pylint: disable=protected-access
+from tensorflow_datasets import testing
+from tensorflow_datasets.datasets.robonet import robonet_dataset_builder
 
 
-class RockPaperScissorsTest(tfds_test.DatasetBuilderTestCase):
-  DATASET_CLASS = rock_paper_scissors.RockPaperScissors
+class Robonet64Test(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = robonet_dataset_builder.Builder
 
   SPLITS = {
-      'train': 3,
-      'test': 3,
+      "train": 9,
   }
 
-  DL_EXTRACT_RESULT = ['rps_train.zip', 'rps_test.zip']
 
-
-if __name__ == '__main__':
-  tfds_test.test_main()
+if __name__ == "__main__":
+  testing.test_main()
