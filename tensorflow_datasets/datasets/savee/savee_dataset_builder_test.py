@@ -13,18 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""SAMSum dataset test."""
+"""Tests for SAVEE dataset builder."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.summarization import samsum
+from tensorflow_datasets.datasets.savee import savee_dataset_builder
 
 
-class SamsumTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = samsum.Samsum
+class SaveeTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = savee_dataset_builder.Builder
   SPLITS = {
-      "train": 1,  # Number of fake train example
-      "validation": 1,  # Number of fake train example
-      "test": 1,  # Number of fake train example
+      "train": 8,
+      "validation": 4,
+      "test": 4,
   }
 
 

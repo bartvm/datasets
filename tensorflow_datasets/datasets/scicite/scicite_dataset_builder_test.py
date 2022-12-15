@@ -13,24 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for Rock, Paper, Scissors data module."""
+"""Test for scicite dataset."""
 
-from tensorflow_datasets.image_classification import rock_paper_scissors
-import tensorflow_datasets.testing as tfds_test
-
-rock_paper_scissors._IMAGE_SHAPE = (None, None, 3)  # pylint: disable=protected-access
+from tensorflow_datasets import testing
+from tensorflow_datasets.datasets.scicite import scicite_dataset_builder
 
 
-class RockPaperScissorsTest(tfds_test.DatasetBuilderTestCase):
-  DATASET_CLASS = rock_paper_scissors.RockPaperScissors
-
+class SciciteTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = scicite_dataset_builder.Builder
   SPLITS = {
-      'train': 3,
-      'test': 3,
+      "train": 3,  # Number of fake train example
+      "validation": 1,  # Number of fake validation example
+      "test": 1,  # Number of fake test example
   }
+  DL_EXTRACT_RESULT = {"scicite": ""}
 
-  DL_EXTRACT_RESULT = ['rps_train.zip', 'rps_test.zip']
 
-
-if __name__ == '__main__':
-  tfds_test.test_main()
+if __name__ == "__main__":
+  testing.test_main()

@@ -13,21 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""schema_guided_dialogue dataset."""
+"""Tests for rockyou dataset module."""
 
-import tensorflow_datasets.public_api as tfds
-from tensorflow_datasets.text.schema_guided_dialogue import schema_guided_dialogue
+from tensorflow_datasets import testing
+from tensorflow_datasets.datasets.rock_you import rock_you_dataset_builder
 
 
-class SchemaGuidedDialogueTest(tfds.testing.DatasetBuilderTestCase):
-  """Tests for schema_guided_dialogue dataset."""
-  DATASET_CLASS = schema_guided_dialogue.SchemaGuidedDialogue
+class RockYouTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = rock_you_dataset_builder.Builder
+
   SPLITS = {
-      'train': 3,  # Number of fake train example
-      'dev': 2,  # Number of fake train example
-      'test': 1,  # Number of fake test example
+      "train": 11,
   }
 
+  DL_EXTRACT_RESULT = "rockyou.txt"
 
-if __name__ == '__main__':
-  tfds.testing.test_main()
+
+if __name__ == "__main__":
+  testing.test_main()
